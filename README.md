@@ -25,6 +25,16 @@ After installation check is running
 sudo systemctl status k3s
 ```
 
+Give permissions
+```
+export KUBECONFIG=~/.kube/config
+
+mkdir ~/.kube 2> /dev/null
+sudo k3s kubectl config view --raw > "$KUBECONFIG"
+chmod 600 "$KUBECONFIG"
+```
+
+
 Check this to ensure you are able to work
 
 ```
