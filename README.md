@@ -56,9 +56,13 @@ mkdir ~/share
 cd ~/share
 
 sudo mount -t cifs //192.168.20.100/HomeNAS ~/share/ -o username=scoop96
+or
+sudo mount -t nfs 192.168.20.100:/mnt/SSD_2TB/docker-volumes ~/share/
 
 df -h
 sudo umount ~/share/
+
+
 
 ```
 
