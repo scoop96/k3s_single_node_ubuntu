@@ -55,8 +55,10 @@ sudo apt-get install nfs-common
 mkdir ~/share
 cd ~/share
 
+FOR SMB MOUNT
 sudo mount -t cifs //192.168.20.100/HomeNAS ~/share/ -o username=scoop96
 or
+FOR NFS MOUNT
 sudo mount -t nfs 192.168.20.100:/mnt/SSD_2TB/docker-volumes ~/share/
 
 df -h
