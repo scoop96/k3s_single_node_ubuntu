@@ -42,3 +42,24 @@ kubectl get nodes
 kubectl cluster-info
 kubectl get pods -A
 ```
+
+
+
+## configure volume drives from NAS 
+We will add a shared drive to copy the volumes that we will use to ensure to not lose any data.
+```
+sudo apt-get install cifs-utils
+or
+sudo apt-get install nfs-common
+
+mkdir ~/share
+cd ~/share
+
+sudo mount -t cifs //192.168.20.100/HomeNAS ~/share/ -o username=scoop96
+
+df -h
+sudo umount ~/share/
+
+```
+
+
