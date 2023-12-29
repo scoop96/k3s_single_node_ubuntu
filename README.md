@@ -13,10 +13,10 @@ sudo apt-get install -y openssh-server openssh-client
 
 And configure the IP if necessary.
 
-## install k3s 
+## install k3s without traefik (we will install NGINX)
 
 ```
-curl -sfL https://get.k3s.io | sh -
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--no-deploy traefik" sh -s -
 ```
 
 After installation check is running 
