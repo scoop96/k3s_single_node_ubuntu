@@ -16,7 +16,7 @@ And configure the IP if necessary.
 ## install k3s without traefik (we will install NGINX)
 
 ```
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--no-deploy traefik" sh -s -
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable=traefik" sh -s -
 ```
 
 After installation check is running 
