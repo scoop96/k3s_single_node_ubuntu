@@ -13,7 +13,7 @@ sudo apt-get install -y openssh-server openssh-client
 
 And configure the IP if necessary.
 
-## install k3s without traefik (we will install NGINX)
+## install k3s without traefik (we will install traefik/NGINX)
 
 ```
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable=traefik" sh -s -
@@ -44,6 +44,79 @@ kubectl get nodes
 kubectl cluster-info
 kubectl get pods -A
 ```
+
+## Install Traefik using helm
+
+Step 1: Add Traefik’s Helm repository:
+
+  ```helm repo add traefik https://helm.traefik.io/traefik```
+  
+Step2: Fetch the latest charts from the repository:
+
+  ```helm repo update```
+  
+Step 3: Create namespace
+
+  ```kubectl create namespace traefik```
+  
+Step 4: Create helm values file traefik-values.yml
+
+```
+# Enabling prometheus metrics and access logs
+# Enable access log
+logs:
+  access:
+    enabled: true
+    format: json
+# This is translated to traefik parameters
+# "--metrics.prometheus=true"
+# "--accesslog"
+# "--accesslog.format=json"
+  
+# Print access log to file instead of stdout
+additionalArguments:
+  - "--accesslog.filepath=/data/access.log"
+deployment:
+  # Adding access logs sidecar
+  additionalContainers:
+    - name: stream-accesslog
+      image: busybox
+      args:
+      - /bin/sh
+      - -c
+      - tail -n+1 -F /data/access.log
+      imagePullPolicy: Always
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /data
+        name: data
+service:
+  spec:
+    # Set load balancer external IP
+    loadBalancerIP: 10.0.0.111
+
+providers:
+  # Enable cross namespace references
+  kubernetesCRD:
+    enabled: true
+    allowCrossNamespace: true
+  # Enable published service
+  kubernetesIngress:
+    publishedService:
+      enabled: true
+```
+
+Step 5: Install Traefik
+
+  ```helm -f traefik-values.yml install traefik traefik/traefik --namespace traefik```
+  
+Step 6: Confirm that the deployment succeeded, run:
+
+  ```kubectl -n traefik get pod```
+
+
 
 
 
