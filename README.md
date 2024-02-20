@@ -51,7 +51,9 @@ helm install traefik -n traefik --atomic traefik/traefik --create-namespace --se
 https://stackoverflow.com/questions/74672718/traefik-ingressroute-crd-not-registering-any-routes
 helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web"}
 
-
+Yeah deploy another pod, create a service that points to it and then create a traefik ingressroute
+But for entry point use websecure (or both web and websecure)
+Just read up on traefik docs for their k8s config things
 
 
 
