@@ -46,11 +46,13 @@ kubectl get pods -A
 ```
 
 ## Install Traefik using helm
+Helm link https://github.com/traefik/traefik-helm-chart#installing
 
-```helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web","websecure"}```
+```
+helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web","websecure"}
+```
 
 https://stackoverflow.com/questions/74672718/traefik-ingressroute-crd-not-registering-any-routes
-helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web"}
 
 Yeah deploy another pod, create a service that points to it and then create a traefik ingressroute
 But for entry point use websecure (or both web and websecure)
