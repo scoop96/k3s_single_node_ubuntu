@@ -47,7 +47,8 @@ kubectl get pods -A
 
 ## Install Traefik using helm
 
-helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web","websecure"}
+```helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web","websecure"}```
+
 https://stackoverflow.com/questions/74672718/traefik-ingressroute-crd-not-registering-any-routes
 helm install traefik -n traefik --atomic traefik/traefik --create-namespace --set ingressRoute.dashboard.entryPoints={"web"}
 
