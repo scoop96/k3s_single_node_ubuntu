@@ -18,3 +18,20 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
+
+```
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+
+to create the docker group and add your user:
+
+Create the docker group.
+`sudo groupadd docker`
+Add your user to the docker group.
+`sudo usermod -aG docker ${USER}`
+You would need to loog out and log back in so that your group membership is re-evaluated or type the following command:
+`su -s ${USER}`
+
+Logout and login to use docker without `sudo`
+
