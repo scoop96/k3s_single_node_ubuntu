@@ -35,3 +35,13 @@ You would need to loog out and log back in so that your group membership is re-e
 
 Logout and login to use docker without `sudo`
 
+
+https://docs.docker.com/engine/install/linux-postinstall/
+
+Enable service 
+
+```
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+```
+
