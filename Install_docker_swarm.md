@@ -44,7 +44,7 @@ Enable service
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 ```
-
+## create networks
 
 ## Install Cloudflare tunnel (cloudflared)
 Use the cloudflare docker-compose
@@ -52,7 +52,9 @@ and the `environment_variables.sh`
 Add the file to `~/.bashrc` with `source /home/scoop/NAS/vallhalla/Variables_entorno.sh`
 
 ##Install portainer 
-`docker run -d -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest`
+`docker run -d -p 9000:9000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest` 
+
+add portainer to `frontend` network
 
 
 
