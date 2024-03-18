@@ -99,4 +99,8 @@ noauto == makes it so it will not mount automatically at boot
 x-systemd.automount == makes it so it will mount on demand
 ```
 
+Also to fix colors in LS because of permissions use this in .bashrc file
+```
+export LS_COLORS="$LS_COLORS:ow=01;36"
+```
 
