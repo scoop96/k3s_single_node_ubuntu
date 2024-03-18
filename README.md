@@ -86,7 +86,7 @@ sudo umount ~/share/
 To automate the mount after reboot we should add this line to `/etc/fstab` 
 
 ```
-//truenas.local/HomeNAS /home/scoop/share/  cifs  username=scoop96,password=XXXXXXX,noauto,x-systemd.automount 0 0
+//truenas.local/HomeNAS /home/scoop/share/  cifs  username=scoop96,password=XXXXXXX,noauto,x-systemd.automount,file_mode=0777,dir_mode=0777 0 0
 ```
 
 and use these commands
