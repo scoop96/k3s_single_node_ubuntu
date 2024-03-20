@@ -1,1 +1,49 @@
+version: "2"
+services:
+  nextcloud_app:
+    depends_on:
+      - nextcloud_db
+    container_name: nextcloud
+    environment:
+      - MYSQL_PASSWORD=$myql_nextcloud_pass
+      - MYSQL_DATABASE=$mysql_nextcloud_database
+      - MYSQL_USER=$mysql_nextcloud_user
+      - MYSQL_HOST=$nmysql_nextcloud_host
+    image: nextcloud
+    networks:
+      - frontend
+    links:
+      - nextcloud_db
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - "./nextcloud_volume:/var/www/html"
+      - "./apps_volume:/var/www/html/custom_apps"
+      - "./config_volume:/var/www/html/config"
+      - "./data_volume:/var/www/html/data"
+      - "./theme_volume:/var/www/html/themes/<YOUR_CUSTOM_THEME>"
+  nextcloud_db:
+    command: "--transaction-isolation=READ-COMMITTED --binlog-format=ROW"
+    environment:
+      - MYSQL_ROOT_PASSWORD=$myql_nextcloud_pass
+      - MYSQL_PASSWORD=$myql_nextcloud_pass
+      - MYSQL_DATABASE=$mysql_nextcloud_database
+      - MYSQL_USER=$mysql_nextcloud_user
+    image: "mariadb:10.5"
+    restart: always
+    networks:
+      - frontend
+    volumes:
+      - "./nextcloud_db_volume:/var/lib/mysql"
+
+
+networks:
+  frontend:
+    external: true
+
+
+
+
+
 
