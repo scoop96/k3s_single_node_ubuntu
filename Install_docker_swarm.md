@@ -57,4 +57,49 @@ Add the file to `~/.bashrc` with `source /home/scoop/NAS/vallhalla/Variables_ent
 add portainer to `frontend` network
 
 
+##Install nextcloud
+
+
+Launch the `docker-compose` from nextcloud folder.
+
+Get inside the nextcloud bash 
+`docker exec -it nextcloud bash`
+
+```
+apt update
+apt install nano
+```
+Inside the `.htaccess`  add
+`nano .htaccess`
+```
+php_value upload_max_filesize 16G
+php_value post_max_size 16G
+php_value max_input_time 3600
+php_value max_execution_time 3600
+php_value memory_limit 2048M
+```
+
+Now edit the `config/config.php` file with nano and add these lines
+
+```
+'trusted_domains' => 
+  array (
+    0 => '192.168.1.65:8080',
+),
+'overwriteprotocol' => 'https',
+'default_phone_region' => 'ES',
+'enable_previews' => true,
+```
+
+In the `nano /etc/apache2/sites-enabled/000-default.conf`
+```
+Redirect 301 /.well-known/carddav https://cloud.dbt3ch.com/remote.php/dav
+Redirect 301 /.well-known/caldav https://cloud.yoursite.com/remote.php/dav
+Redirect 301 /.well-known/webdav https://cloud.yoursite.com/remote.php/dav
+Redirect 301 /.well-known/webfinger https://cloud.yoursite.com/index.php
+Redirect 301 /.well-known/nodeinfo https://cloud.yoursite.com/index.php
+```
+
+
+
 
