@@ -59,6 +59,14 @@ add portainer to `frontend` network
 
 ##Install nextcloud
 
+Before launching the docker compose you need to create or modify the paths for the volumes.
+```
+    - "/path/to/nextcloud:/var/www/html"
+    - "/path/to/apps:/var/www/html/custom_apps"
+    - "/path/to/config:/var/www/html/config"
+    - "/path/to/data:/var/www/html/data"
+    - "/path/to/theme:/var/www/html/themes/<YOUR_CUSTOM_THEME>"
+```
 
 Launch the `docker-compose` from nextcloud folder.
 
@@ -99,6 +107,17 @@ Redirect 301 /.well-known/webdav https://cloud.yoursite.com/remote.php/dav
 Redirect 301 /.well-known/webfinger https://cloud.yoursite.com/index.php
 Redirect 301 /.well-known/nodeinfo https://cloud.yoursite.com/index.php
 ```
+
+
+
+#after so you need to install kuma for nextcloud 
+
+
+
+simply launch the docker-compose inside the `uptime_kuma/`
+Remmember to modify the cron in nextcloud.
+and then we add a new monitor in kuma with the endpoint `<nextcloud endpoint>/cron.php` at 180 secs and thats it
+
 
 
 
