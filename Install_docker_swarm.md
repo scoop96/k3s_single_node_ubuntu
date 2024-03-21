@@ -106,6 +106,10 @@ Redirect 301 /.well-known/caldav https://cloud.yoursite.com/remote.php/dav
 Redirect 301 /.well-known/webdav https://cloud.yoursite.com/remote.php/dav
 Redirect 301 /.well-known/webfinger https://cloud.yoursite.com/index.php
 Redirect 301 /.well-known/nodeinfo https://cloud.yoursite.com/index.php
+
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+</IfModule>
 ```
 
 
