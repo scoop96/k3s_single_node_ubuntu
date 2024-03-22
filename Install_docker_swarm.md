@@ -58,6 +58,7 @@ add portainer to `frontend` network
 
 
 ##Install nextcloud
+https://dbt3ch.com/books/nextcloud-with-cloudflare-tunnels/page/nextcloud-with-cloudflare-tunnels
 
 Before launching the docker compose you need to create or modify the paths for the volumes.
 ```
