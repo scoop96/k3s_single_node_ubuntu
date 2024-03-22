@@ -80,11 +80,26 @@ apt install nano
 Inside the `.htaccess`  add
 `nano .htaccess`
 ```
+
+
 php_value upload_max_filesize 16G
 php_value post_max_size 16G
 php_value max_input_time 3600
 php_value max_execution_time 3600
 php_value memory_limit 2048M
+
+
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteRule ^\.well-known/carddav https://nextcloud.domain.com/remote.php/dav [R=301,L]
+  RewriteRule ^\.well-known/caldav https://nextcloud.domain.com/remote.php/dav [R=301,L]
+  RewriteRule ^\.well-known/webfinger https://nextcloud.domain.com/index.php/.well-known/webfinger [R=301,L]
+  RewriteRule ^\.well-known/nodeinfo https://nextcloud.domain.com/index.php/.well-known/nodeinfo [R=301,L]
+</IfModule>
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+</IfModule>
 ```
 
 Now edit the `config/config.php` file with nano and add these lines
@@ -99,18 +114,6 @@ Now edit the `config/config.php` file with nano and add these lines
 'enable_previews' => true,
 ```
 
-In the `nano /etc/apache2/sites-enabled/000-default.conf`
-```
-Redirect 301 /.well-known/carddav https://cloud.dbt3ch.com/remote.php/dav
-Redirect 301 /.well-known/caldav https://cloud.yoursite.com/remote.php/dav
-Redirect 301 /.well-known/webdav https://cloud.yoursite.com/remote.php/dav
-Redirect 301 /.well-known/webfinger https://cloud.yoursite.com/index.php
-Redirect 301 /.well-known/nodeinfo https://cloud.yoursite.com/index.php
-
-<IfModule mod_headers.c>
-    Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
-</IfModule>
-```
 
 
 
