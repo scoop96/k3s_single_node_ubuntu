@@ -129,4 +129,13 @@ and then we add a new monitor in kuma with the endpoint `<nextcloud endpoint>/cr
 
 
 
+##memories
+docker exec -u 33 -it nextcloud  ./occ preview:generate-all
+cronjob each 15 mins in `crontab -e`
+docker exec -u 33 -it nextcloud  ./occ preview:generate
+
+
+
+docker exec -it nextcloud bash -c "apt update && apt -y install ffmpeg"
+
 
