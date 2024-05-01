@@ -116,6 +116,12 @@ Now edit the `config/config.php` file with nano and add these lines
 ```
 
 
+`chmod -R 777 /ruta/a/la/carpeta`
+`docker exec -u 33 -it nextcloud php occ db:add-missing-indices`
+ 
+https://hijosdeinit.gitlab.io/howto_solucionando_errores_bdd_NextCloud_comando_occ/
+
+
 
 
 #after so you need to install kuma for nextcloud 
