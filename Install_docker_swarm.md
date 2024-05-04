@@ -114,7 +114,8 @@ Now edit the `config/config.php` file with nano and add these lines
 ),
 'overwriteprotocol' => 'https',
 'default_phone_region' => 'ES',
-'enable_previews' => true,
+'loglevel' => 2,
+'maintenance_window_start' => 1,
 ```
 
 
