@@ -1,3 +1,5 @@
+`sudo rsync -av /mnt/HDD2TB/docker/volumes/nextcloud/ /home/scoop/share/volumes/nextcloud/`
+
 ## install docker
 
 
