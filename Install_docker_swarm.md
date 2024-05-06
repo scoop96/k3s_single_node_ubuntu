@@ -117,8 +117,11 @@ Now edit the `config/config.php` file with nano and add these lines
 'loglevel' => 2,
 'maintenance_window_start' => 1,
 ```
+```
 
+*/6 * * * * timeout 1m docker exec -u 33 nextcloud php -f /var/www/html/cron.php 
 
+```
 `chmod -R 777 /ruta/a/la/carpeta`
 `docker exec -u 33 -it nextcloud php occ db:add-missing-indices`
  
