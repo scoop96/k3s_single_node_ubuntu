@@ -1,12 +1,13 @@
 `sudo rsync -av /mnt/HDD2TB/docker/volumes/nextcloud/ /home/scoop/share/volumes/nextcloud/`
 
 ## install docker
-
+```
 sudo crontab -e 
 0 3 * * * rsync -a --delete /mnt/HDD2TB/docker/volumes/nextcloud/ /home/scoop/share/volumes/nextcloud/
 crontab -e
 */15 * * * * docker exec -u 33 -it nextcloud ./occ preview:pre-generate
 */6 * * * *  timeout 1m docker exec -u 33 nextcloud php -f /var/www/html/cron.php
+```
 
 `https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository`
 
