@@ -113,6 +113,15 @@ php_value memory_limit 2048M
 </IfModule>
 ```
 
+HACER LA INSTALACION DEL SMBCLIENT
+
+```
+apt update
+
+apt install smbclient
+```
+
+
 Now edit the `config/config.php` file with nano and add these lines
 
 ```
