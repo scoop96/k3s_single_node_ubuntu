@@ -114,7 +114,7 @@ php_value memory_limit 2048M
 ```
 
 HACER LA INSTALACION DEL SMBCLIENT
-
+https://github.com/nextcloud/docker/tree/master/.examples#php-module-smbclient
 ```
 apt update
 
