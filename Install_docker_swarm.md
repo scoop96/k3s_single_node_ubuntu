@@ -144,7 +144,7 @@ Now edit the `config/config.php` file with nano and add these lines
  
 https://hijosdeinit.gitlab.io/howto_solucionando_errores_bdd_NextCloud_comando_occ/
 
-
+docker exec -u 33 -it nextcloud php occ config:app:set files max_chunk_size --value 20971520
 
 
 #after so you need to install kuma for nextcloud 
