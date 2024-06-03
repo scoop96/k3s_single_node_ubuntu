@@ -1,5 +1,5 @@
 `sudo rsync -av /mnt/HDD2TB/docker/volumes/nextcloud/ /home/scoop/share/volumes/nextcloud/`
-
+php -i |grep php.ini
 ## install docker
 ```
 sudo crontab -e 
