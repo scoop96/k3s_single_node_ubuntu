@@ -1,5 +1,8 @@
 `sudo rsync -av /mnt/HDD2TB/docker/volumes/nextcloud/ /home/scoop/share/volumes/nextcloud/`
+
 php -i |grep php.ini
+
+docker exec -u 33 -it nextcloud php occ files:scan-app-data
 ## install docker
 ```
 sudo crontab -e 
