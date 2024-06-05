@@ -1,5 +1,10 @@
 `sudo rsync -av /mnt/HDD2TB/docker/volumes/nextcloud/ /home/scoop/share/volumes/nextcloud/`
 
+REPAIR COMMAND 
+
+docker exec -u 33 -it nextcloud  ./occ maintenance:repair
+
+
 php -i |grep php.ini
 
 docker exec -u 33 -it nextcloud php occ files:scan-app-data
